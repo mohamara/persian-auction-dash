@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -79,6 +73,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -98,4 +93,80 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Typography */
+  h1 {
+    @apply text-[24px] font-bold;
+  }
+  
+  h2 {
+    @apply text-[20px] font-semibold;
+  }
+  
+  p, span, div, button, input, textarea, select {
+    @apply text-[16px];
+  }
+}
+
+/* Custom classes */
+@layer components {
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-1;
+  }
+  
+  .metric-card {
+    @apply bg-white rounded-lg shadow-sm p-6 border border-gray-100 card-hover;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-md transition-all hover:bg-opacity-90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-md transition-all hover:bg-opacity-90;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-white px-4 py-2 rounded-md transition-all hover:bg-opacity-90;
+  }
+}
+
+/* RTL specific styles */
+:root[dir="rtl"] .flip-x {
+  transform: scaleX(-1);
+}
+
+/* Font adjustments for Persian typography */
+@font-face {
+  font-family: 'IRANSans';
+  font-style: normal;
+  font-weight: normal;
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/iran-sans-cdn@latest/dist/fonts/iran-sans-web.woff') format('woff');
+}
+
+/* Counter animation */
+.counter::after {
+  content: "0";
+  animation: count-up 2s forwards;
+}
+
+.counter-1::after {
+  content: attr(data-value);
+}
+
+/* Animation delays for staggered counters */
+.counter-delay-1::after {
+  animation-delay: 0.2s;
+}
+
+.counter-delay-2::after {
+  animation-delay: 0.4s;
+}
+
+.counter-delay-3::after {
+  animation-delay: 0.6s;
+}
+
+.counter-delay-4::after {
+  animation-delay: 0.8s;
 }
